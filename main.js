@@ -23,9 +23,6 @@ client.on('message', message =>{
             message.channel.send(message.member.id);
         }
         if(command === 'start'){
-            console.log(genchannel.members);
-            //genchannel.join();
-            //message.member.voice.setChannel(mutechannel, "Round has started");
             message.channel.send('Round Started!');
                 for (const [memberID, memberx] of genchannel.members) {
                   memberx.voice.setChannel(mutechannel)
@@ -34,9 +31,6 @@ client.on('message', message =>{
                 }
         }
         if(command === 'stop'){
-            console.log(mutechannel.members);
-            //mutechannel.join();
-            //message.member.voice.setChannel(genchannel, "Round has ended");
             message.channel.send('Round Ended!');
             for (const [memberID, memberx] of mutechannel.members) {
                 memberx.voice.setChannel(genchannel)
@@ -46,5 +40,4 @@ client.on('message', message =>{
         }
     }
 });
-
 client.login(process.env.TOKEN);
