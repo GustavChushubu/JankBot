@@ -50,7 +50,7 @@ client.on('message', message =>{
             }
         }
         if(command === 'help'){
-            message.channel.send('Commands: ^help, ^roulette (2/6 bullets, very risky :eyes: Sugmo cant play), ^start, ^stop');
+            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop');
         }
     }
 });
