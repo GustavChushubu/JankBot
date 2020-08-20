@@ -15,13 +15,6 @@ client.on('message', message =>{
         const command = args.shift().toLowerCase();
         const mutechannel = client.channels.cache.get("745924516823171083");
         const genchannel = client.channels.cache.get("745924592622764062");
-        if(command === 'getchannelid'){
-            const vChannel = message.member.voice.channel;
-            message.channel.send(vChannel.id);
-        }
-        if(command === 'getmyid'){
-            message.channel.send(message.member.id);
-        }
         if(command === 'start'){
             message.channel.send('Round Started!');
                 for (const [memberID, memberx] of genchannel.members) {
@@ -37,6 +30,20 @@ client.on('message', message =>{
                   .then(() => console.log(`Moved ${memberx.user.tag}.`))
                   .catch(console.error);
               }
+        }
+        if(command === 'roulette'){
+            let bullets = Math.floor(Math.random() * 6); 
+            if(bullets === 1 || bullets === 4){
+                message.member.kick();
+                message.channel.send(message.member.displayName + ' died!');
+            }
+            else
+            {
+                message.channel.send(message.member.displayName + ' lived!');
+            }
+        }
+        if(command === 'help'){
+            message.channel.send('Commands: ^help, ^roulette (2/6 bullets, very risky :eyes:), ^start, ^stop');
         }
     }
 });
