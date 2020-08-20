@@ -4,14 +4,15 @@ const client = new Discord.Client();
 
 const prefix = '^';
 
+let lazycounter = Math.floor(Math.random() * 2); 
+
 client.once('ready', () => {
     console.log('Online');
-    client.user.setStatus('^help for commands');
 });
 
 client.on('message', message =>{
     if(!message.content.startsWith(prefix) || message.author.bot) return;{
-
+        if(lazycounter == 0){
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
         const mutechannel = client.channels.cache.get("745924516823171083");
@@ -51,6 +52,10 @@ client.on('message', message =>{
         }
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop');
+        }
+        }
+        else{
+            message.channel.send('Oi bruv fuck u');
         }
     }
 });
