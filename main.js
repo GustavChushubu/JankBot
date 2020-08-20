@@ -6,7 +6,7 @@ const prefix = '^';
 
 client.once('ready', () => {
     console.log('Online');
-    bot.user.setStatus('^help for commands');
+    client.user.setStatus('^help for commands');
 });
 
 client.on('message', message =>{
