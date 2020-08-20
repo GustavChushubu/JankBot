@@ -32,6 +32,7 @@ client.on('message', message =>{
               }
         }
         if(command === 'roulette'){
+            if(message.member.id == 395068250096009217){
             let bullets = Math.floor(Math.random() * 6); 
             console.log(bullets);
             if(bullets === 1 || bullets === 4){
@@ -42,9 +43,10 @@ client.on('message', message =>{
             {
                 message.channel.send(message.member.displayName + ' lived!');
             }
+            }
         }
         if(command === 'help'){
-            message.channel.send('Commands: ^help, ^roulette (2/6 bullets, very risky :eyes:), ^start, ^stop');
+            message.channel.send('Commands: ^help, ^roulette (2/6 bullets, very risky :eyes: Sugmo cant play), ^start, ^stop');
         }
     }
 });
