@@ -13,7 +13,6 @@ client.once('ready', () => {
 client.on('message', message =>{
     lazycounter = Math.floor(Math.random() * 2);
     if(!message.content.startsWith(prefix) || message.author.bot) return;{
-        console.log(lazycounter);
         if(lazycounter == 0){
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
