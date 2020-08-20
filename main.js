@@ -33,6 +33,9 @@ client.on('message', message =>{
         }
         if(command === 'roulette'){
             if(message.member.id == 395068250096009217 || message.member.id == 366349808534814721){
+                message.channel.send('No Wolves allowed!');
+            }
+            else{
             let bullets = Math.floor(Math.random() * 6); 
             console.log(bullets);
             if(bullets === 1 || bullets === 4){
