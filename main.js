@@ -33,6 +33,7 @@ client.on('message', message =>{
         }
         if(command === 'roulette'){
             let bullets = Math.floor(Math.random() * 6); 
+            console.log(bullets);
             if(bullets === 1 || bullets === 4){
                 message.member.kick();
                 message.channel.send(message.member.displayName + ' died!');
