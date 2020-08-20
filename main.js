@@ -32,7 +32,7 @@ client.on('message', message =>{
               }
         }
         if(command === 'roulette'){
-            if(message.member.id == 395068250096009217 || message.member.id == 366349808534814721){
+            if(message.member.id == 395068250096009217){
                 message.channel.send('No Wolves allowed!');
             }
             else{
