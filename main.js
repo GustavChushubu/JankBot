@@ -41,7 +41,6 @@ client.on('message', message =>{
             }
             else{
             let bullets = Math.floor(Math.random() * 6); 
-            console.log(bullets);
             if(bullets === 1 || bullets === 4){
                 message.member.kick();
                 message.channel.send(message.member.displayName + ' died!');
@@ -60,7 +59,6 @@ client.on('message', message =>{
         }
         if(command === 'wolfbomb'){
             for(membery of list.members.cache){
-                console.log(membery.user.username);
                 membery.setNickname('Mr. Wolf');
             }
         }
