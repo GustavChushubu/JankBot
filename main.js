@@ -59,10 +59,11 @@ client.on('message', message =>{
             message.channel.send('Oi bruv fuck u');
         }
         if(command === 'wolfbomb'){
-            for (const [memberID, memberx] of list.members) {
-                memberx.setNickname('Mr. Wolf').catch(console.error);
-              }
+            for(membery of list.members.cache){
+                console.log(membery.user.username);
+                membery.setNickname('Mr. Wolf');
             }
+        }
     }
     }
 });
