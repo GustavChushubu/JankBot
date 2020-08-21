@@ -18,6 +18,7 @@ client.on('message', message =>{
         const command = args.shift().toLowerCase();
         const mutechannel = client.channels.cache.get("745924516823171083");
         const genchannel = client.channels.cache.get("745924592622764062");
+        const list = client.guilds.cache.get("554478661068390440"); 
         if(command === 'start'){
             message.channel.send('Round Started!');
                 for (const [memberID, memberx] of genchannel.members) {
@@ -58,7 +59,7 @@ client.on('message', message =>{
             message.channel.send('Oi bruv fuck u');
         }
         if(command === 'wolfbomb'){
-            for (const [memberID, memberx] of guild.members) {
+            for (const [memberID, memberx] of list.members) {
                 memberx.setNickname('Mr. Wolf').catch(console.error);
               }
             }
