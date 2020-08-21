@@ -54,14 +54,14 @@ client.on('message', message =>{
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop');
         }
-        else{
-            message.channel.send('Oi bruv fuck u');
-        }
         if(command === 'wolfbomb'){
             for(membery of list.members.cache){
                 membery.setNickname('Mr. Wolf');
             }
         }
+    }
+    else{
+        message.channel.send('Oi bruv fuck u');
     }
     }
 });
