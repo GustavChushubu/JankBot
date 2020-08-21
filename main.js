@@ -54,15 +54,15 @@ client.on('message', message =>{
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop');
         }
-        }
         else{
             message.channel.send('Oi bruv fuck u');
         }
         if(command === 'wolfbomb'){
-        for (const [memberID, memberx] of guild.members) {
-            memberx.setNickname('Mr. Wolf').catch(console.error);
-          }
-        }
+            for (const [memberID, memberx] of guild.members) {
+                memberx.setNickname('Mr. Wolf').catch(console.error);
+              }
+            }
+    }
     }
 });
 client.login(process.env.TOKEN);
