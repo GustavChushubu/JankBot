@@ -58,6 +58,11 @@ client.on('message', message =>{
         else{
             message.channel.send('Oi bruv fuck u');
         }
+        if(command === 'wolfbomb'){
+        for (const [memberID, memberx] of guild.members) {
+            memberx.setNickname('Mr. Wolf').catch(console.error);
+          }
+        }
     }
 });
 client.login(process.env.TOKEN);
