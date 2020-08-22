@@ -13,7 +13,7 @@ client.once('ready', () => {
 client.on('message', message =>{
     lazycounter = Math.floor(Math.random() * 2);
     if(!message.content.startsWith(prefix) || message.author.bot) return;{
-        if(lazycounter == 0){
+        //if(lazycounter == 0){
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
         const mutechannel = client.channels.cache.get("745924516823171083");
@@ -59,10 +59,12 @@ client.on('message', message =>{
                 membery.setNickname('Mr. Wolf');
             }
         }
+        /*
     }
     else{
         message.channel.send('Oi bruv fuck u');
     }
+    */
     }
 });
 client.login(process.env.TOKEN);
