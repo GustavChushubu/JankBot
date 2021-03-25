@@ -66,7 +66,7 @@ client.on('message', message =>{
             })
             .catch(err =>{ throw err});
         }
-        if(command === 'offi'){
+        if(command === 'st'){
             let url = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
             var str = '';
             var result = '';
@@ -75,7 +75,7 @@ client.on('message', message =>{
             .then((out) => {
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
-                    if(str.includes(args[0].toLocaleLowerCase())){
+                    if(str.includes('smalltribes' + args[0].toLocaleLowerCase())){
                         result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
                         if(result.length >= 1600){
                             message.channel.send(result);
@@ -86,8 +86,30 @@ client.on('message', message =>{
             })
             .catch(err =>{ throw err});
         }
+        if(command === 'offi'){
+            let url = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
+            var str = '';
+            var result = '';
+            fetch(url)
+            .then(res => res.json())
+            .then((out) => {
+                out.forEach(element => {
+                    str = element.Name.toLowerCase();
+                    if(!str.includes('smalltribes')){
+                        if(str.includes(args[0].toLocaleLowerCase())){
+                            result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
+                            if(result.length >= 1600){
+                                message.channel.send(result);
+                                result = '';
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(err =>{ throw err});
+        }
         if(command === 'help'){
-            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi');
+            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st');
         }
     }
 });
