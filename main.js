@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+const fetch = require("node-fetch");
+
 const prefix = '^';
 
 client.once('ready', () => {
@@ -46,10 +48,17 @@ client.on('message', message =>{
         }
         if(command === 'dedi'){
             let url = 'http://arkdedicated.com/xbox/cache/unofficialserverlist.json';
+            var str = '';
             fetch(url)
             .then(res => res.json())
             .then((out) => {
-                print(out);
+                console.log(out);
+                out.forEach(element => {
+                    str = element.Name.toLowerCase();
+                    if(str.includes(args[0].toLocaleLowerCase())){
+                        message.channel.send('**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port);
+                    }
+                });
             })
             .catch(err =>{ throw err});
         }
@@ -58,4 +67,4 @@ client.on('message', message =>{
         }
     }
 });
-client.login(process.env.TOKEN);
+client.login('NzQ1NjA3NDYyMzI5MTIyODc3.Xz0PDw._ZWUKRn-W0io0TUmy_thzPMfu2k');
