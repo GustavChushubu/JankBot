@@ -77,7 +77,7 @@ client.on('message', message =>{
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes('smalltribes')){
-                        if(str.endsWith(args[0])){
+                        if(str.includes(args[0])){
                             result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
                             if(result.length >= 1600){
                                 message.channel.send(result);
@@ -100,7 +100,7 @@ client.on('message', message =>{
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(!str.includes('smalltribes')){
-                        if(str.endsWith(args[0])){
+                        if(str.includes(args[0])){
                             result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
                             if(result.length >= 1600){
                                 message.channel.send(result);
