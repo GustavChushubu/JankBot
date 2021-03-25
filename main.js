@@ -53,7 +53,6 @@ client.on('message', message =>{
             fetch(url)
             .then(res => res.json())
             .then((out) => {
-                console.log(out);
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes(args[0].toLocaleLowerCase())){
