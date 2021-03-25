@@ -75,11 +75,13 @@ client.on('message', message =>{
             .then((out) => {
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
-                    if(str.includes('smalltribes' + args[0].toLocaleLowerCase())){
-                        result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
-                        if(result.length >= 1600){
-                            message.channel.send(result);
-                            result = '';
+                    if(str.includes('smalltribes')){
+                        if(str.endsWith(args[0].toLocaleLowerCase())){
+                            result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
+                            if(result.length >= 1600){
+                                message.channel.send(result);
+                                result = '';
+                            }
                         }
                     }
                 });
@@ -96,7 +98,7 @@ client.on('message', message =>{
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(!str.includes('smalltribes')){
-                        if(str.includes(args[0].toLocaleLowerCase())){
+                        if(str.endsWith(args[0].toLocaleLowerCase())){
                             result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
                             if(result.length >= 1600){
                                 message.channel.send(result);
