@@ -57,9 +57,12 @@ client.on('message', message =>{
                     str = element.Name.toLowerCase();
                     if(str.includes(args[0].toLocaleLowerCase())){
                         result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n';
+                        if(result.length >= 1600){
+                            message.channel.send(result);
+                            result = '';
+                        }
                     }
                 });
-                message.channel.send(result)
             })
             .catch(err =>{ throw err});
         }
