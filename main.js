@@ -49,6 +49,7 @@ client.on('message', message =>{
         if(command === 'dedi'){
             let url = 'http://arkdedicated.com/xbox/cache/unofficialserverlist.json';
             var str = '';
+            var result = '';
             fetch(url)
             .then(res => res.json())
             .then((out) => {
@@ -56,9 +57,10 @@ client.on('message', message =>{
                 out.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes(args[0].toLocaleLowerCase())){
-                        message.channel.send('**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port);
+                        result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n';
                     }
                 });
+                message.channel.send(result)
             })
             .catch(err =>{ throw err});
         }
