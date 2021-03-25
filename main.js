@@ -70,6 +70,7 @@ client.on('message', message =>{
             let url = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
             var str = '';
             var result = '';
+            console.log(args[0]);
             fetch(url)
             .then(res => res.json())
             .then((out) => {
@@ -92,6 +93,7 @@ client.on('message', message =>{
             let url = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
             var str = '';
             var result = '';
+            console.log(args[0]);
             fetch(url)
             .then(res => res.json())
             .then((out) => {
