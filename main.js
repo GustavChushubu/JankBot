@@ -113,7 +113,7 @@ client.on('message', message =>{
             .catch(err =>{ throw err});
         }
         if(command === 'help'){
-            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st');
+            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st (^offi and ^st are WIP)');
         }
     }
 });
