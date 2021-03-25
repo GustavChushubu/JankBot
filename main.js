@@ -6,7 +6,8 @@ const prefix = '^';
 
 client.once('ready', () => {
     console.log('Online');
-    client.user.setActivity('^help', {url: 'https://www.youtube.com/watch?v=d1YBv2mWll0', type: 'STREAMING'}).then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+    client.user.setActivity('^help', {url: 'https://www.youtube.com/watch?v=d1YBv2mWll0', type: 'STREAMING'})
+    .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
     .catch(console.error);
 });
 
@@ -16,7 +17,6 @@ client.on('message', message =>{
         const command = args.shift().toLowerCase();
         const mutechannel = client.channels.cache.get("745924516823171083");
         const genchannel = client.channels.cache.get("745924592622764062");
-        const list = client.guilds.cache.get("554478661068390440"); 
         if(command === 'start'){
             message.channel.send('Round Started!');
                 for (const [memberID, memberx] of genchannel.members) {
@@ -43,6 +43,15 @@ client.on('message', message =>{
             {
                 message.channel.send(message.member.displayName + ' lived!');
             }
+        }
+        if(command === 'dedi'){
+            let url = 'http://arkdedicated.com/xbox/cache/unofficialserverlist.json';
+            fetch(url)
+            .then(res => res.json())
+            .then((out) => {
+                print(out);
+            })
+            .catch(err =>{ throw err});
         }
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop');
