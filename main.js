@@ -52,8 +52,9 @@ client.on('message', message =>{
             var result = '';
             var search = '';
             args.forEach(element =>{
-                search += ' ' + element;
+                search += element + ' ';
             });
+            search = search.slice(0, -1);
             console.log(search);
             fetch(url)
             .then(res => res.json())
