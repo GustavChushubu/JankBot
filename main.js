@@ -50,6 +50,11 @@ client.on('message', message =>{
             let url = 'http://arkdedicated.com/xbox/cache/unofficialserverlist.json';
             var str = '';
             var result = '';
+            var search = '';
+            args.forEach(element =>{
+                search += ' ' + element;
+            });
+            console.log(search);
             fetch(url)
             .then(res => res.json())
             .then((out) => {
