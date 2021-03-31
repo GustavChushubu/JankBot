@@ -6,11 +6,47 @@ const fetch = require("node-fetch");
 
 const prefix = '^';
 
+const unURL = 'http://arkdedicated.com/xbox/cache/unofficialserverlist.json';
+
+const ofURL = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
+
+var unList;
+
+var ofList;
+
 client.once('ready', () => {
     console.log('Online');
     client.user.setActivity('^help', {url: 'https://www.youtube.com/watch?v=d1YBv2mWll0', type: 'STREAMING'})
     .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
     .catch(console.error);
+
+    fetch(unURL)
+    .then(res => res.json())
+    .then((out) => {
+        unList = out;
+    })
+    .catch(err =>{ throw err});
+    fetch(ofURL)
+    .then(res => res.json())
+    .then((out) => {
+        ofList = out;
+    })
+    .catch(err =>{ throw err});
+
+    setInterval(function(){
+        fetch(unURL)
+        .then(res => res.json())
+        .then((out) => {
+            unList = out;
+        })
+        .catch(err =>{ throw err});
+        fetch(ofURL)
+        .then(res => res.json())
+        .then((out) => {
+            ofList = out;
+        })
+        .catch(err =>{ throw err});
+    },20000);
 });
 
 client.on('message', message =>{
@@ -47,7 +83,6 @@ client.on('message', message =>{
             }
         }
         if(command === 'dedi'){
-            let url = 'http://arkdedicated.com/xbox/cache/unofficialserverlist.json';
             var str = '';
             var result = '';
             var search = '';
@@ -56,10 +91,7 @@ client.on('message', message =>{
             });
             search = search.slice(0, -1);
             console.log(search);
-            fetch(url)
-            .then(res => res.json())
-            .then((out) => {
-                out.forEach(element => {
+                unList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes(search.toLowerCase())){
                         result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
@@ -69,18 +101,12 @@ client.on('message', message =>{
                         }
                     }
                 });
-            })
-            .catch(err =>{ throw err});
         }
         if(command === 'st'){
-            let url = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
             var str = '';
             var result = '';
             console.log(args[0]);
-            fetch(url)
-            .then(res => res.json())
-            .then((out) => {
-                out.forEach(element => {
+                ofList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes('smalltribes')){
                         if(str.includes(args[0])){
@@ -92,18 +118,12 @@ client.on('message', message =>{
                         }
                     }
                 });
-            })
-            .catch(err =>{ throw err});
         }
         if(command === 'offi'){
-            let url = 'http://arkdedicated.com/xbox/cache/officialserverlist.json';
             var str = '';
             var result = '';
             console.log(args[0]);
-            fetch(url)
-            .then(res => res.json())
-            .then((out) => {
-                out.forEach(element => {
+                ofList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(!str.includes('smalltribes')){
                         if(str.includes(args[0])){
@@ -115,8 +135,6 @@ client.on('message', message =>{
                         }
                     }
                 });
-            })
-            .catch(err =>{ throw err});
         }
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st (^offi and ^st are WIP)');
