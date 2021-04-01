@@ -94,7 +94,10 @@ client.on('message', message =>{
                 unList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes(search.toLowerCase())){
-                        result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
+                        result += '**Name: ' + element.Name + '**' +
+                        '\n**IP: **' + element.IP + 
+                        '\n**Players: **' + element.NumPlayers + '/' + element.MaxPlayers +
+                        '\n**Port: **' + element.Port + '\n\n';
                         if(result.length >= 1600){
                             message.channel.send(result);
                             result = '';
@@ -135,6 +138,9 @@ client.on('message', message =>{
                         }
                     }
                 });
+        }
+        if(command === 'kratos'){
+            
         }
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st (^offi and ^st are WIP)');
