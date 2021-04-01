@@ -162,10 +162,10 @@ client.on('message', message =>{
                         
                     }
                 });
-                message.channel.send("**Total Players in Servers Named: '" + searchS + "': **" + result + "/" + maxre);
+                message.channel.send("**Total Players in Servers Named '" + searchS + "': **" + result + "/" + maxre);
         }
         if(command === 'help'){
-            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st (^offi and ^st are WIP)');
+            message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st, ^pop);
         }
     }
 });
