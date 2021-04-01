@@ -111,7 +111,7 @@ client.on('message', message =>{
                 ofList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes('smalltribes')){
-                        if(str.endsWith(args[0])){
+                        if(str.endsWith('s'+args[0])){
                             result += '**Name: ' + element.Name + '**' +
                             '\n**IP: **' + element.IP + 
                             '\n**Players: **' + element.NumPlayers + '/' + element.MaxPlayers +
