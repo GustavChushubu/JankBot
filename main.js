@@ -162,7 +162,7 @@ client.on('message', message =>{
                         
                     }
                 });
-                message.channel.send('**Total Players in Servers Named**' + searchS +
+                message.channel.send('**Total Players in Servers Named: **' + searchS +
                     '\n**Total Players: **' + result + '/' + maxre);
         }
         if(command === 'help'){
