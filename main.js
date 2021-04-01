@@ -162,7 +162,8 @@ client.on('message', message =>{
                         
                     }
                 });
-                message.channel.send('\n**Players: **' + result + '/' + maxre);
+                message.channel.send('**Total Players in Servers Named**' + searchS +
+                    '\n**Total Players: **' + result + '/' + maxre);
         }
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st (^offi and ^st are WIP)');
