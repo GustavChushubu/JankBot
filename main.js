@@ -85,15 +85,13 @@ client.on('message', message =>{
         if(command === 'dedi'){
             var str = '';
             var result = '';
-            var search = '';
-            args.forEach(element =>{
-                search += element + ' ';
-            });
-            search = search.slice(0, -1);
-            console.log(search);
+            var searchS = '';
+            searchS = args.join(' ');
+            console.log(searchS);
                 unList.forEach(element => {
-                    str = element.Name.toLowerCase();
-                    if(str.includes(search.toLowerCase())){
+                    str = element.Name;
+                    str = str.toLowerCase();
+                    if(str.search(searchS.toLowerCase()) !== -1){
                         result += '**Name: ' + element.Name + '**' +
                         '\n**IP: **' + element.IP + 
                         '\n**Players: **' + element.NumPlayers + '/' + element.MaxPlayers +
@@ -104,6 +102,7 @@ client.on('message', message =>{
                         }
                     }
                 });
+                message.channel.send(result);
         }
         if(command === 'st'){
             var str = '';
@@ -112,8 +111,11 @@ client.on('message', message =>{
                 ofList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(str.includes('smalltribes')){
-                        if(str.includes(args[0])){
-                            result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
+                        if(str.endsWith(args[0])){
+                            result += '**Name: ' + element.Name + '**' +
+                            '\n**IP: **' + element.IP + 
+                            '\n**Players: **' + element.NumPlayers + '/' + element.MaxPlayers +
+                            '\n**Port: **' + element.Port + '\n\n';                            
                             if(result.length >= 1600){
                                 message.channel.send(result);
                                 result = '';
@@ -121,6 +123,7 @@ client.on('message', message =>{
                         }
                     }
                 });
+                message.channel.send(result);
         }
         if(command === 'offi'){
             var str = '';
@@ -129,8 +132,11 @@ client.on('message', message =>{
                 ofList.forEach(element => {
                     str = element.Name.toLowerCase();
                     if(!str.includes('smalltribes')){
-                        if(str.includes(args[0])){
-                            result += '**Name: ' + element.Name + '**' + '\nIP: ' + element.IP + '\nPort: ' + element.Port + '\n\n';
+                        if(str.endsWith(args[0])){
+                            result += '**Name: ' + element.Name + '**' +
+                            '\n**IP: **' + element.IP + 
+                            '\n**Players: **' + element.NumPlayers + '/' + element.MaxPlayers +
+                            '\n**Port: **' + element.Port + '\n\n';                            
                             if(result.length >= 1600){
                                 message.channel.send(result);
                                 result = '';
@@ -138,6 +144,7 @@ client.on('message', message =>{
                         }
                     }
                 });
+                message.channel.send(result);
         }
         if(command === 'kratos'){
             
