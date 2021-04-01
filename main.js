@@ -146,8 +146,23 @@ client.on('message', message =>{
                 });
                 message.channel.send(result);
         }
-        if(command === 'kratos'){
-            
+        if(command === 'pop'){
+            var str = '';
+            var result = 0;
+            var maxre = 0;
+            var searchS = '';
+            searchS = args.join(' ');
+            console.log(searchS);
+                unList.forEach(element => {
+                    str = element.Name;
+                    str = str.toLowerCase();
+                    if(str.search(searchS.toLowerCase()) !== -1){
+                        result += element.NumPlayers;
+                        maxre += element.MaxPlayers;
+                        
+                    }
+                });
+                message.channel.send('\n**Players: **' + result + '/' + maxre);
         }
         if(command === 'help'){
             message.channel.send('Commands: ^help, ^roulette (2/6 bullets), ^start, ^stop, ^dedi <name>, ^offi, ^st (^offi and ^st are WIP)');
